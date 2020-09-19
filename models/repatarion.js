@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Repatarion.init({
     date: {
       allowNull: false,
-      type: Sequelize.DATEONLY
+      type: DataTypes.DATEONLY
     },
     description: {
       allowNull: false,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
       allowNull: false,
-      type: Sequelize.DECIMAL(10, 2)
+      type: DataTypes.DECIMAL(10, 2)
     }
   }, {
     sequelize,
