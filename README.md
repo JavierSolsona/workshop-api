@@ -1,29 +1,27 @@
-# README #
+# Workshop API
+This is a project for my Symmetrics Lab interview, this are the steps to run this API
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Perparate the enviorment
+Install **nodejs** version 12.11.0
 
-### What is this repository for? ###
+Install **npm** version 6.11.3
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Run the command **npm install** for install the dependencies
 
-### How do I get set up? ###
+## Configure the project
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### DataBase
 
-### Contribution guidelines ###
+The project uses a MySQL DataBase
 
-* Writing tests
-* Code review
-* Other guidelines
+Create an empty DataBase and a user and give permission to the user over the DataBase
 
-### Who do I talk to? ###
+In the **/config/config.json** file update the values in development option (DataBase name, host, user name, user password and dialect). The dialect can be one of this: MariaDB, MySQL or PostgreSQL.
 
-* Repo owner or admin
-* Other community or team contact
+Then run the commands:
+**npx sequelize-cli db:migrate**
+**npx sequelize-cli db:seed:all**
+
+## Run the project
+
+Use the command **PORT=8080 npm start** if port is changed you will need to changed the URL in the front end project too
