@@ -5,28 +5,42 @@ const {
   INTERNAL_SERVER_ERROR,
   BAD_REQUEST,
   ID_INT,
-  BRAND_LENGTH,
-  COLOR_LENGTH,
-  PLATE_LENGTH
+  DATE_FORMAT,
+  PRICE_FORMAT,
+  DESCRIPTION_LENGTH
 } = require('../constants/errors');
 
 exports.validate = (method) => {
   switch (method) {
     case 'urlParameter': {
       return [
-        param('clientId').isInt({min: 1}).withMessage(ID_INT)
+        param('carId').isInt({min: 1}).withMessage(ID_INT)
       ]
     }
     case 'create': {
      return [
-       param('clientId').isInt({min: 1}).withMessage(ID_INT),
-       body('brand').isLength({min: 1, max: 255}).withMessage(BRAND_LENGTH),
-       body('color').isLength({min: 1, max: 255}).withMessage(COLOR_LENGTH),
-       body('plate').isLength({min: 1, max: 255}).withMessage(PLATE_LENGTH)
+       param('carId').isInt({min: 1}).withMessage(ID_INT),
+       body('date').isDate({format: "YYYY-MM-DD"}).withMessage(DATE_FORMAT),
+       body('price').isDecimal({decimal_digits: '1,2', max: 255}).withMessage(PRICE_FORMAT),
+       body('description').isLength({min: 1}).withMessage(DESCRIPTION_LENGTH)
        ]   
     }
   }
 }
+
+exports.getAll = (req, res) => {
+    models.Repatarion.findAll({
+        include: ['Car'],
+        order: [
+          ['date', 'DESC']
+        ]
+      })
+      .then((result) => {
+          return res.status(200).send(result);
+      }).catch((err) => {
+          return res.status(500).send({errors: [], message: INTERNAL_SERVER_ERROR});
+      });
+};
 
 exports.index = (req, res) => {
     const errors = validationResult(req);
@@ -35,10 +49,10 @@ exports.index = (req, res) => {
         return res.status(400).send({errors: errors.array(), message: BAD_REQUEST});
     }
     
-    models.Car.findAll({
-       include: ['Client'],
+    models.Repatarion.findAll({
+        include: ['Car'],
         where: {
-          clientId: req.params.clientId
+          carId: req.params.carId
         }
       })
       .then((result) => {
@@ -55,8 +69,8 @@ exports.create = (req, res) => {
         return res.status(400).send({errors: errors.array(), message: BAD_REQUEST});
     }
 
-    models.Car.create({brand: req.body.brand, color: req.body.color,
-      plate: req.body.plate, ClientId: req.params.clientId})
+    models.Repatarion.create({date: req.body.date, price: req.body.price,
+      description: req.body.description, CarId: req.params.carId})
         .then((result) => {
             return res.status(201).send(result);
         }).catch((err) => {

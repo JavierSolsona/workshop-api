@@ -8,3 +8,6 @@ exports.ID_INT = "ID must be integer greater than 1";
 exports.BRAND_LENGTH = "Brand length between 1 and 255";
 exports.COLOR_LENGTH = "Color length between 1 and 255";
 exports.PLATE_LENGTH = "Plate length between 1 and 255";
+exports.DATE_FORMAT = "Date format invalid";
+exports.PRICE_FORMAT = "Price format invalid must have 1 or 2 decimals";
+exports.DESCRIPTION_LENGTH = "Description length at least 1";
