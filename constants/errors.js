@@ -4,3 +4,7 @@ exports.RUT_LENGTH = "Rut length between 1 and 255";
 exports.EMAIL_LENGTH = "Email length between 1 and 255";
 exports.EMAIL_FORMAT = "Email format invalid";
 exports.BAD_REQUEST = "Bad request";
+exports.ID_INT = "ID must be integer greater than 1";
+exports.BRAND_LENGTH = "Brand length between 1 and 255";
+exports.COLOR_LENGTH = "Color length between 1 and 255";
+exports.PLATE_LENGTH = "Plate length between 1 and 255";

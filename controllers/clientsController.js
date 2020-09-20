@@ -1,6 +1,6 @@
 const models  = require('../models');
 const fs = require('fs');
-const { body, param, validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const {
   NAME_LENGTH,
   RUT_LENGTH,

@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const clientsRouter = require('./routes/clients');
+const carsRouter = require('./routes/cars');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb', parameterLimit: 10 }));
 
 app.use('/api/clients', clientsRouter);
+app.use('/api/cars', carsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
