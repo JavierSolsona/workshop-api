@@ -19,7 +19,9 @@ Create an empty DataBase and a user and give permission to the user over the Dat
 In the **/config/config.json** file update the values in development option (DataBase name, host, user name, user password and dialect). The dialect can be one of this: MariaDB, MySQL or PostgreSQL.
 
 Then run the commands:
+
 **npx sequelize-cli db:migrate**
+
 **npx sequelize-cli db:seed:all**
 
 ## Run the project
