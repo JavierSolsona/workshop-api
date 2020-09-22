@@ -16,7 +16,7 @@ The project uses a MySQL DataBase
 
 Create an empty DataBase and a user and give permission to the user over the DataBase
 
-In the **/config/config.json** file update the values in development option (DataBase name, host, user name, user password and dialect). The dialect can be one of this: MariaDB, MySQL or PostgreSQL.
+In the **/config/config.json** file update the values in development option (DataBase name, host, user name, user password and dialect). The dialect can be one of this: mariadb, mysql or postgres.
 
 Then run the commands:
 
@@ -27,3 +27,9 @@ Then run the commands:
 ## Run the project
 
 Use the command **PORT=8080 npm start** if port is changed you will need to changed the URL in the front end project too
+
+## Test the projest
+
+For run the tests you need configure a test DataBase in the **/config/config.json**  file in the test option.
+
+Then run the command **npm test**
