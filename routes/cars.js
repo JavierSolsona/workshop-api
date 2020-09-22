@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const CarsController = require('../controllers/cars-controller');
 
 router.get('/:clientId', CarsController.validate('urlParameter'), CarsController.index);
